@@ -1,0 +1,35 @@
+@use '../util/' as *;
+
+.main-section{
+    
+    .header{
+        background-color: lightskyblue;
+        height: 9%;
+    }
+}
+
+.content-container{
+    background-color: grey;
+    width: 100%;
+    height: 91%;
+    padding-top: rem(35);
+    padding-left: rem(25);
+    padding-right: rem(25);
+    padding-bottom: rem(35);
+    
+}
+.columns-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: rem(20);
+    background-color: black;
+    width: 100%;
+    height: 100%;
+
+}
+.left-column{
+    background-color: rgb(243, 187, 187);
+}
+.right-column{
+    background-color: rgb(243, 187, 187);
+}

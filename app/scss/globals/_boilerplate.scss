@@ -1,0 +1,29 @@
+@use '../util/' as *;
+
+html{
+    box-sizing: border-box;
+    font-size: 100%;
+}
+
+*, *::before, *::after{
+    box-sizing: inherit;
+}
+
+body{
+    margin:0;
+    padding:0;
+    color: var(--grey-text);
+    background-color: lightgrey;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container{
+    background-color: lightgrey;
+    max-width: rem(1400);
+    height:100vh;
+    display:flex;
+}
+
+.main-section{
+    background-color: lightpink;
+    width: 100vw;
+}

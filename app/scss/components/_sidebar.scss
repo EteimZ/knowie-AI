@@ -1,0 +1,7 @@
+@use '../util/' as *;
+
+.sidebar{
+    background-color: rgb(118, 158, 145);
+    min-width: rem(180);
+    height: 100vh;
+}

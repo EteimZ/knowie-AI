@@ -1,5 +1,2 @@
-body{
-    background-color: rgb(59, 55, 55);
-    font-family: Arial, Helvetica, sans-serif;
-    color: blue;
-}
+@forward 'globals';
+@forward 'components';

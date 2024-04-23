@@ -1,0 +1,6 @@
+@use "sass:math";
+
+@function rem($pixels, $content: 16){
+    @return (math.div($pixels, $content)) * 1rem;
+}
+// All that'll be in this file is a function that converts pixels to rems, instead of calculating manually everytime

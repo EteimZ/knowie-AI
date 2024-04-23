@@ -1,0 +1,11 @@
+h1, h2, h3{
+    font-weight: 700;
+    line-height: 1.1; //this is like saying 110 percent of the font size
+    margin-top:0 ;
+}
+p{
+    margin-top: 0; //the browser would typically add a margin top and bottom, so just remove one
+}
+a, a:visited, a:active{
+    text-decoration: none; //to remove that default underline with links
+}
