@@ -108,3 +108,57 @@
     
         
 }
+
+//Upload page(up) styles 
+.upload-page-main-container{
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.up-content-container{
+    background-color: var(--white);
+    width: rem(400);
+    height: rem(300);
+    border-radius: rem(10);
+   
+
+    .box-1{ //contains top group of elements in the drag and drop box
+   
+        width: 65%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: rem(20) rem(0);
+        margin-top: rem(40);
+        border: 2px dotted var(--grey-text);
+        border-radius: rem(10);
+        
+        img{
+            width: rem(35);
+        }
+        p{
+            color: var(--dark-grey);
+            font-size: rem(14);
+            font-weight: bold;
+            text-align: center;
+        }
+        button{
+            color: var(--white);
+            background-color: var(--button-blue);
+            border: none;
+            border-radius: rem(4);
+            padding: rem(6) rem(20);
+            cursor: pointer;
+        }
+    }
+
+    .box-2{//contains bottom group of elements in the drag and drop box
+        width: 65%;
+        margin: rem(20) auto;
+        font-size: rem(14);
+        color: var(--dark-grey);
+    }
+}
