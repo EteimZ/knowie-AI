@@ -145,14 +145,23 @@
             font-weight: bold;
             text-align: center;
         }
-        button{
+        .custom-file-upload{
             color: var(--white);
             background-color: var(--button-blue);
             border: none;
             border-radius: rem(4);
             padding: rem(6) rem(20);
             cursor: pointer;
+            font-size: rem(14);
         }
+        span{
+            font-size: rem(12);
+            margin-top: rem(8);
+            margin-left: rem(8);
+            margin-right: rem(8);
+            text-align: center;
+        }
+      
     }
 
     .box-2{//contains bottom group of elements in the drag and drop box
@@ -160,5 +169,9 @@
         margin: rem(20) auto;
         font-size: rem(14);
         color: var(--dark-grey);
+
+        p{
+            text-align: center;
+        }
     }
 }

@@ -23,14 +23,28 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '..', 'frontend', 'views'));
 app.use(express.static(path.join(__dirname, '..', 'frontend', 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 
 app.get('/', (req, res) => {
-  res.render('pages/index');
+  res.render('pages/upload');
 });
 
+// Endpoint to serve file upload page
 app.get('/upload', (req, res) => {
   res.render('pages/upload');
+});
+
+// Endpoint to serve file upload page
+app.post('/upload', upload.single('file'), (req, res, next) => {
+  res.send({ message: "Successful" });
+});
+
+// Endpoint to serve file upload page
+app.get('/chat/:filename', (req, res) => {
+  const filename = req.params.filename;
+  res.render('pages/chat', { filename: filename });
 });
 
 const port = process.env.PORT || 5000;  // Use environment variable for port or default to 3000
