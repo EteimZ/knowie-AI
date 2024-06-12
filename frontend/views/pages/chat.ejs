@@ -112,5 +112,22 @@
             </div>
         </div>
     </div>
+    
+ 
+    <script>
+        
+        // Function to set iframe source based on URL
+        function setIframeSrc() {
+            const pathname = window.location.pathname;
+            const filename = pathname.substring(pathname.lastIndexOf('/') + 1);
+            console.log(filename);
+            document.getElementById('fileViewer').src = `../../../uploads/${filename}`;
+        }
+
+         // Call the function to set iframe source on page load
+         window.onload = setIframeSrc;
+
+
+    </script>
 </body>
 </html>
