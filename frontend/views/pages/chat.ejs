@@ -70,6 +70,15 @@
                         <img src="/images/premium-icon.svg" class="header-icon" alt="">
                         <span>GPTs</span>
                         <img src="/images/caret-right.svg" class="caret-icon" alt="">
+
+                        <div class="dropdown-container">
+                            <select id="model">
+                                <option value="gpt-3.5">GPT-3.5</option>
+                                <option value="gpt-4">GPT-4</option>
+                                <option value="gpt-4o">GPT-4o</option>
+                                <option value="gemini">Gemini</option>
+                            </select>
+                        </div>
                     </div>
 
                 </div>
@@ -83,7 +92,7 @@
 
                     </div>
                     <div class="right-column">
-                        <div class="grid-item-1">
+                        <div class="grid-item-1" id="chat">
 
                         </div>
                         <div class="grid-item-2">
@@ -95,12 +104,12 @@
 
                             <div 
                             class="chatbox-container">
-                                <textarea type="text" placeholder="Write your message here..." class="chat-input"></textarea>
+                                <textarea type="text" placeholder="Write your message here..." class="chat-input" id="chat-input" type="text"></textarea>
                                 <div class="block-1">
                                     <img src="/images/bill-icon.svg" class="bill-icon chat-input-icon" alt="">
                                     <img src="/images/plus-icon.svg" class="chat-input-icon">
                                 </div>
-                                <div class="block 2">
+                                <div class="block 2" id="send">
                                     <img src="/images/send-icon.svg" class="send-icon chat-input-icon" alt="">
                                 </div>
                 
@@ -115,7 +124,44 @@
     
  
     <script>
-        
+        const sendButton = document.getElementById("send");
+        const chatInput = document.getElementById("chat-input");
+        const chat = document.getElementById("chat");
+        const model = document.getElementById("model");
+
+        console.log(model.value)
+
+        const pathname = window.location.pathname;
+        const filename = pathname.substring(pathname.lastIndexOf('/') + 1);
+        console.log(filename)
+
+        async function llamachat(data) {
+            const response = await fetch(`/chat?filename=${filename}&model=${model.value}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ message: data })// Send the user's message as JSON in the request body
+               
+            }); 
+
+            const responseData = await response.json();
+            const para = document.createElement("p");
+            para.textContent = `AI: ${responseData.message}`;// Set the paragraph text to display the AI's response
+            chat.appendChild(para);// Append the paragraph to the chat div
+        }
+
+        async function sendMessage() {
+            const para = document.createElement("p");
+            const chatData = chatInput.value;
+            chatInput.value = '';
+            para.textContent = `Human: ${chatData}`;
+            chat.appendChild(para);
+            await llamachat(chatData);
+        }
+
+        sendButton.addEventListener("click", () => { sendMessage(); })
+
         // Function to set iframe source based on URL
         function setIframeSrc() {
             const pathname = window.location.pathname;
