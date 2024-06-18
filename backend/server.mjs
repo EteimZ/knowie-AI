@@ -46,8 +46,8 @@ app.get('/upload', (req, res) => {
 });
 
 //testing something
-app.get('/copy', (req, res) => {
-  res.render('pages/copy');
+app.get('/flashcardss', (req, res) => {
+  res.render('pages/flashcardss');
 });
 
 // Endpoint to serve file upload page
