@@ -79,34 +79,75 @@
             <div class="flashcard-content-container">
                 <div class="flashcard-wrapper">
                     <div class="row-1">
-                        <div class="flashcard flashcard-1">
+
+                        <div class="flashcard-container">
+                            <div class="thecard">
+                                <div class="thefront">FRONT</div>
+                                <div class="theback">BACK</div>
+                            </div>
                         </div>
-                        <div class="flashcard flashcard-2">
+                        <div class="flashcard-container">
+                            <div class="thecard">
+                                <div class="thefront">FRONT</div>
+                                <div class="theback">BACK</div>
+                            </div>
                         </div>
-                        <div class="flashcard flashcard-3">
+                        <div class="flashcard-container">
+                            <div class="thecard">
+                                <div class="thefront">FRONT</div>
+                                <div class="theback">BACK</div>
+                            </div>
                         </div>
-                        <div class="flashcard flashcard-4">
+                        <div class="flashcard-container">
+                            <div class="thecard">
+                                <div class="thefront">FRONT</div>
+                                <div class="theback">BACK</div>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="row-2">
-                        <div class="flashcard flashcard-5">
+                        <div class="flashcard-container">
+                            <div class="thecard">
+                                <div class="thefront">FRONT</div>
+                                <div class="theback">BACK</div>
+                            </div>
                         </div>
-                        <div class="flashcard flashcard-6">
+                        <div class="flashcard-container">
+                            <div class="thecard">
+                                <div class="thefront">FRONT</div>
+                                <div class="theback">BACK</div>
+                            </div>
                         </div>
-                        <div class="flashcard flashcard-7">
+                        <div class="flashcard-container">
+                            <div class="thecard">
+                                <div class="thefront">FRONT</div>
+                                <div class="theback">BACK</div>
+                            </div>
                         </div>
-                        <div class="flashcard flashcard-8">
+                        <div class="flashcard-container">
+                            <div class="thecard">
+                                <div class="thefront">FRONT</div>
+                                <div class="theback">BACK</div>
+                            </div>
                         </div>
                     </div>
-                    
-                    
-                    
                 </div>
             </div>
         </div>
     </div>
 
-   
+   <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const flashcards = document.querySelectorAll('.flashcard-container');
+    
+        flashcards.forEach(flashcard => {
+            flashcard.addEventListener('click', () => {
+                const card = flashcard.querySelector('.thecard');
+                card.classList.toggle('flipped');
+            });
+        });
+    });
+   </script>
 </body>
 </html>

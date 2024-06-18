@@ -313,6 +313,44 @@
     margin: auto;
     margin-top: rem(30);
 
+    .flashcard-container{
+        width: rem(224);
+        height: rem(288);
+        background-color: white;
+        position: relative;
+        perspective: 1000px;
+        border-radius: rem(15);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .thecard{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.5s ease;
+    }
+    .thecard.flipped {
+        transform: rotateY(-180deg);
+    }
+    .thefront, .theback {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: rem(15);
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .thefront{
+        background-color: white;
+        border-top: 2px solid #3a52ee;
+        border-right: 2px solid #3a52ee;
+    }
+    .theback {
+        transform: rotateY(180deg);
+        background-color: #3a52ee;
+    }
+
     .row-1, .row-2{
         display: flex;
         justify-content: center;
@@ -321,48 +359,5 @@
     }
 }
 
-.flashcard{
-    width: rem(224);
-    height: rem(288);
-    background-color: white;
-    border-radius: rem(15);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.flashcard:hover {
-    background-color:var(--background);
-  }
 
-.flashcard-1{
-    border-top: 2px solid #3a52ee;
-    border-right: 2px solid #3a52ee;
-}
-.flashcard-2{
-    border-top: 2px solid #f77ead;
-    border-right: 2px solid #f77ead;
-}
-.flashcard-3{
-    border-top: 2px solid #7ED6CA;
-    border-right: 2px solid #7ED6CA;
-}
-.flashcard-4{
-    border-top: 2px solid #FFCD91;
-    border-right: 2px solid #FFCD91;
-}
-.flashcard-5{
-    border-top: 2px solid #7ED6CA;
-    border-right: 2px solid #7ED6CA;
-}
-.flashcard-6{
-    border-top: 2px solid #3a52ee;
-    border-right: 2px solid #3a52ee;
-}
-.flashcard-7{
-    border-top: 2px solid #FFCD91;
-    border-right: 2px solid #FFCD91;
-}
-.flashcard-8{
-    border-top: 2px solid #f77ead;
-    border-right: 2px solid #f77ead;
-}
+
