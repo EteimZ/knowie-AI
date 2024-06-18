@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/dist/styles.css" />
+    <script src="/js/script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!--Side bar-->
+      <div class="sidebar">
+        <div class="sidebar-header">
+          <img class="icon-1" src="/images/Logo (1).svg" alt="" />
+          <img class="icon-2" src="/images/Knowlee.svg" alt="" />
+          <img class="icon-3" src="/images/collapse-icon.svg" alt="" />
+        </div>
+
+        <nav>
+          <ul>
+            <li>
+              <img
+                src="/images/dashboard-icon.svg"
+                class="sidebar-icon"
+                alt=""
+              />
+              <span>Dashboard</span>
+            </li>
+            <li>
+              <img src="/images/notes-icon.svg" class="sidebar-icon" alt="" />
+              <span>My Notes</span>
+            </li>
+            <li class="blue-bordered-list-item">
+              <img
+                src="/images/ai-tools-icon.svg"
+                class="sidebar-icon ai-tools-icon"
+                alt=""
+              />
+              <Span>AI Tools</Span>
+              <img src="/images/caret-right.svg" alt="" />
+            </li>
+            <li>
+              <img
+                src="/images/settings-icon.svg"
+                class="sidebar-icon"
+                alt=""
+              />
+              <span>Settings</span>
+            </li>
+            <li class="blue-bordered-list-item">
+              <img
+                src="/images/profile-icon.svg"
+                class="sidebar-icon profile-icon"
+                alt=""
+              />
+              <span>Profile</span>
+            </li>
+            <li>
+              <button>
+                <img
+                  src="/images/log-out-icon.svg"
+                  class="logout-icon"
+                  alt=""
+                />
+                <span>Log Out</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="main-section">
+        <div class="header">
+          <div>
+           
+          </div>
+
+          <div class="header-icons-container">
+            <div class="block-1">
+              <img
+                src="/images/notifications-icon.svg"
+                class="header-icon"
+                alt=""
+              />
+              <img src="/images/plus-icon.svg" class="header-icon" alt="" />
+            </div>
+            <div class="block-2">
+              <img src="/images/premium-icon.svg" class="header-icon" alt="" />
+              <span>GPTs</span>
+              <img src="/images/caret-right.svg" class="caret-icon" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz generation section -->
+        <div class="quiz-content-container">
+            <div class="heading">
+                <p>Complete the Quiz Below </p>
+            </div>
+
+          <div class="quiz-wrapper" id="quizWrapper">
+
+        </div>
+        <div id="message" style="display: none;"><%= message %></div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const rawText = document.getElementById('message').innerText;
+        const obj = JSON.parse(rawText);
+        console.log(obj); // Verify that you receive the correct object
+        
+        const quizWrapper = document.getElementById('quizWrapper');
+        
+        // Iterate through questions array in obj
+        obj.questions.forEach((questionObj, index) => {
+            // Create individual quiz container
+            const quizContainer = document.createElement('div');
+            quizContainer.classList.add('individual-quiz-container');
+            
+            // Create question text element
+            const questionText = document.createElement('p');
+            questionText.textContent = `${index + 1}. ${questionObj.question}`;
+            quizContainer.appendChild(questionText);
+            
+            // Create options buttons
+            Object.keys(questionObj.options).forEach((optionKey) => {
+                const optionButton = document.createElement('button');
+                optionButton.classList.add('btn');
+                optionButton.textContent = questionObj.options[optionKey];
+                
+                // Add click event listener to check answer
+                optionButton.addEventListener('click', function() {
+                    checkAnswer(questionObj.answer, optionKey);
+                });
+                
+                quizContainer.appendChild(optionButton);
+            });
+            
+            // Append quiz container to quizWrapper in the DOM
+            quizWrapper.appendChild(quizContainer);
+        });
+    });
+    </script>
+
+
+  </body>
+</html>
+

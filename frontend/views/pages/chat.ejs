@@ -94,8 +94,8 @@
             </div>
             <div class="block-2">
               <img src="/images/premium-icon.svg" class="header-icon" alt="" />
-              <span>GPTs</span>
-              <img src="/images/caret-right.svg" class="caret-icon" alt="" />
+              <!-- <span>GPTs</span>
+              <img src="/images/caret-right.svg" class="caret-icon" alt="" /> -->
 
               <div class="dropdown-container">
                 <select id="model">
@@ -131,9 +131,9 @@
 
               <div class="grid-item-2">
                 <div class="ai-tool-options">
-                  <button>Summarize</button>
-                  <button>Generate Flashcards</button>
-                  <button>Generate Quiz</button>
+                  <a href="/summarize" id="summarize">Summarize</a>
+                  <a href="/flashcard" id="flashcard">Generate Flashcards</a>
+                  <a href="/quiz" id="quiz">Generate Quiz</a>
                 </div>
 
                 <div class="userInput-container">
@@ -172,12 +172,33 @@
       const chatInput = document.getElementById("chat-input");
       const chat = document.getElementById("chat");
       const model = document.getElementById("model");
+      const quizLink = document.getElementById('quiz');
+      const flashLink = document.getElementById('flashcard');
 
-      console.log(model.value);
+
 
       const pathname = window.location.pathname;
       const filename = pathname.substring(pathname.lastIndexOf("/") + 1);
       console.log(filename);
+
+      
+      quizLink.addEventListener("click", ()=>{
+        const url = new URL(quizLink.href);
+        url.searchParams.append('filename', filename );
+        url.searchParams.append('model', model.value );
+
+        // Update the link's href with the new URL including query parameters
+        quizLink.href = url.toString();
+     });
+
+     flashLink.addEventListener("click", ()=>{
+        const url = new URL(flashLink.href);
+        url.searchParams.append('filename', filename );
+        url.searchParams.append('model', model.value );
+
+        // Update the link's href with the new URL including query parameters
+        flashLink.href = url.toString();
+    });
 
       async function llamachat(data) {
         const response = await fetch(

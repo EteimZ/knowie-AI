@@ -55,7 +55,7 @@
             }
 
             p{
-                background-color: #85c1f8;
+                background-color: var(--button-blue);
                 margin-bottom: 0;
                 margin-left: rem(5);
                 padding-left: rem(10);
@@ -65,6 +65,7 @@
                 border-radius: 0px 10px 10px 10px;
                 font-size: rem(15);
                 line-height: 1.6;
+                color: white;
             }
         }
         .human-message{
@@ -94,15 +95,22 @@
             margin-bottom: rem(10);
             display: flex;
             gap: rem(8);
+            transition: color 0.3s ease;
         }
-        button{
+        a:hover {
+            background-color: var(--button-blue);
+            color: white;
+
+        }
+        a{
             font-size: rem(12);
-            color: var(--grey-text-2);
+            color: var(--grey-text);
             background-color: var(--background);
             font-weight: 200;
             border-radius: rem(12);
             padding: rem(6) rem(10);
             border: none;
+            cursor: pointer;
         }
     }
 
@@ -224,4 +232,76 @@
             text-align: center;
         }
     }
+}
+
+//Quiz section styles 
+.quiz-content-container{
+    width: 94.4%;
+    height: 80.1%;
+    background-color: white;
+    margin: auto;
+    border-radius: rem(14);
+    overflow-y: auto;
+
+    .heading{
+        max-width: rem(256);
+        margin-top: rem(20);
+        margin-left: rem(30);
+
+        p{
+            font-size: rem(20);
+            color: #3a52ee;
+            font-weight: 600;
+            border-bottom: 1px solid #333;
+            padding-bottom: rem(15);
+            margin-bottom: 0;
+        }
+    }
+    .quiz-wrapper{
+        max-width: rem(600);
+        padding-left: rem(30);
+        padding-bottom: rem(30);
+      }
+      .individual-quiz-container {
+        margin-top: rem(30);
+
+        p{
+            color: black;
+            font-weight: 600;
+            font-size: rem(16);
+      }
+      .quiz-container h2 {
+        color: black;
+        font-weight: 600;
+      }
+      .btn {
+        background: white;
+        color: #222;
+        font-weight: 500;
+        width: 100%;
+        border: 1px solid #222;
+        padding: 10px;
+        margin: 10px 0;
+        text-align: left;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .btn:hover {
+        background: #3f3f3f;
+        color: #fff;
+      }
+      #submit-btn{
+        background: #001e4d;
+        color: #fff;
+        font-weight: 500;
+        width: 150px;
+        border: 0;
+        padding: 10px;
+        margin: 20px auto 0;
+        border-radius: 4px;
+        cursor: pointer;
+        display: block;
+      }
+      }
 }

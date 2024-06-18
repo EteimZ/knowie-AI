@@ -45,6 +45,11 @@ app.get('/upload', (req, res) => {
   res.render('pages/upload');
 });
 
+//testing something
+app.get('/copy', (req, res) => {
+  res.render('pages/copy');
+});
+
 // Endpoint to serve file upload page
 app.post('/upload', upload.single('file'), (req, res, next) => {
   res.send({ message: "Successful" });
@@ -83,6 +88,7 @@ app.post('/chat', async (req, res) => {
   }
 
   const path = `./uploads/${req.query.filename}`
+  
   const essay = await readPdfText({ url: path });
   const document = new Document({ text: essay, id_: "essay" });
 
@@ -125,7 +131,7 @@ app.get('/quiz', async (req, res) => {
 
   const index = await VectorStoreIndex.fromDocuments([document]);
 
-  const predefinedPrompt = `Generate a quiz from this document. Let the quiz be made up of 4 questions, with 4 options each, and one correct answer. The questions should be formatted in json, json should start with a start_json_ tag and end with a _end_json tag. For example here's is a sample response: start_json_ { "questions": [ { "question": "What is the capital of France?", "options": { "a": "Berlin", "b": "Madrid", "c": "Paris", "d": "Rome" }, "answer": "c" }, { "question": "Which planet is known as the Red Planet?", "options": { "a": "Earth", "b": "Mars", "c": "Jupiter", "d": "Venus" }, "answer": "b" } ]} _end_json`;
+  const predefinedPrompt = `Generate a quiz from this document. Let the quiz be made up of 10 questions, with 4 options each, and one correct answer. Let the difficulty level be hard. The questions should be formatted in json, json should start with a start_json_ tag and end with a _end_json tag. For example here's is a sample response: start_json_ { "questions": [ { "question": "What is the capital of France?", "options": { "a": "Berlin", "b": "Madrid", "c": "Paris", "d": "Rome" }, "answer": "c" }, { "question": "Which planet is known as the Red Planet?", "options": { "a": "Earth", "b": "Mars", "c": "Jupiter", "d": "Venus" }, "answer": "b" } ]} _end_json`;
 
   // Query the index
   const queryEngine = index.asQueryEngine();

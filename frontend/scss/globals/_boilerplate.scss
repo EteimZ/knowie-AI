@@ -29,6 +29,7 @@ body{
 }
 
 .main-section{
-    background-color:lightpink;
     width: 100vw;
+    display: flex;
+    flex-direction: column;
 }
