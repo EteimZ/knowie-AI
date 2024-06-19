@@ -12,6 +12,8 @@ OPENAI_API_KEY=
 LLAMA_CLOUD_API_KEY= 
 GOOGLE_API_KEY= 
 
+Click on "Watch Sass" at the bottom of VS Code
+
 Run npm devStart to run 
 
 
