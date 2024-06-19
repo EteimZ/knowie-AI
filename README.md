@@ -1,7 +1,18 @@
 # knowie-AI
 
-This project is an AI-powered study-aid platform for students
+This project is an AI-powered study-aid platform for students.
 
-This is run by installing gulp and running gulp, or by using the sass watching extension
+Install Live Sass Compiler by Glenn Marks
 
-devStart to run
+Run npm install
+
+put API keys in .env file, in the format below:
+
+OPENAI_API_KEY= 
+LLAMA_CLOUD_API_KEY= 
+GOOGLE_API_KEY= 
+
+Run npm devStart to run 
+
+
+
