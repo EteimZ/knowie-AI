@@ -176,7 +176,7 @@ app.get('/flashcards', async (req, res) => {
 
   const index = await VectorStoreIndex.fromDocuments([document]);
 
-  const predefinedPrompt = `Extract important concepts from this document and their short definitions/explanations. Put it in key value pairs. Let there be four concept and explanation pair. The pairs should be formatted in json, json should start with a start_json_ tag and end with a _end_json tag. For example here's is a sample response: start_json_ { "concepts": [ { "concept": "nutrition", "explanation": "The taking in and use of food and other nourishing material by the body" }, { "concept": " Intellectual Property", "explanation": "Legal rights that protect creations of the mind, such as inventions, literary and artistic works, designs, symbols, names, and images used in commerce. " } ]} _end_json`;
+  const predefinedPrompt = `Extract important concepts from this document and their short definitions/explanations. Put it in key value pairs. Let there be eight concept and explanation pairs. The explanations for each concept should not exceed 180 characters long. The pairs should be formatted in json, json should start with a start_json_ tag and end with a _end_json tag. For example here's is a sample response: start_json_ { "concepts": [ { "concept": "nutrition", "explanation": "The taking in and use of food and other nourishing material by the body" }, { "concept": " Intellectual Property", "explanation": "Legal rights that protect creations of the mind, such as inventions, literary and artistic works, designs, symbols, names, and images used in commerce. " } ]} _end_json`;
 
   // Query the index
   const queryEngine = index.asQueryEngine();
