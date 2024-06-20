@@ -137,6 +137,8 @@
         </div>
     </div>
 
+    <div id="message" style="display: none;"><%= message %></div>
+
    <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         const flashcards = document.querySelectorAll('.flashcard-container');
@@ -146,6 +148,71 @@
                 const card = flashcard.querySelector('.thecard');
                 card.classList.toggle('flipped');
             });
+        });
+    });
+
+    const rawText = document.getElementById('message').innerText;
+    const obj = JSON.parse(rawText);
+    console.log(obj);
+    
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // JSON data
+        const data = {
+            "concepts": [
+                {
+                    "concept": "Right to Repair Movement",
+                    "explanation": "A consumer advocacy initiative that seeks to ensure individuals have the ability to repair and modify their own electronic devices and equipment."
+                },
+                {
+                    "concept": "Planned Obsolescence",
+                    "explanation": "The practice of deliberately designing products with a limited lifespan or with features that become outdated quickly, leading consumers to replace them rather than repair them."
+                },
+                {
+                    "concept": "Greenwashing",
+                    "explanation": "A marketing strategy in which a company promotes itself as environmentally friendly through misleading or unsubstantiated claims, often to distract from negative practices or to appeal to environmentally conscious consumers."
+                },
+                {
+                    "concept": "Intellectual Property",
+                    "explanation": "Legal rights that protect creations of the mind, such as inventions, literary and artistic works, designs, symbols, names, and images used in commerce."
+                }
+            ]
+        };
+    
+        // Function to create a flashcard
+        function createFlashcard(concept, explanation) {
+            const flashcardContainer = document.createElement('div');
+            flashcardContainer.classList.add('flashcard-container');
+    
+            const theCard = document.createElement('div');
+            theCard.classList.add('thecard');
+    
+            const theFront = document.createElement('div');
+            theFront.classList.add('thefront');
+            theFront.textContent = concept;
+    
+            const theBack = document.createElement('div');
+            theBack.classList.add('theback');
+            theBack.textContent = explanation;
+    
+            theCard.appendChild(theFront);
+            theCard.appendChild(theBack);
+            flashcardContainer.appendChild(theCard);
+    
+            // Add event listener for flip on click
+            flashcardContainer.addEventListener('click', () => {
+                theCard.classList.toggle('flipped');
+            });
+    
+            return flashcardContainer;
+        }
+    
+        // Get the flashcard wrapper element
+        const flashcardWrapper = document.querySelector('.flashcard-wrapper');
+    
+        // Iterate through the data and create flashcards
+        data.concepts.forEach(item => {
+            const flashcard = createFlashcard(item.concept, item.explanation);
+            flashcardWrapper.appendChild(flashcard);
         });
     });
    </script>

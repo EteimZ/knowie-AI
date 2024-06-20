@@ -44,11 +44,10 @@ app.get('/', (req, res) => {
 app.get('/upload', (req, res) => {
   res.render('pages/upload');
 });
+// app.get('/flashcards', (req, res) => {
+//   res.render('pages/flashcards');
+// });
 
-//testing something
-app.get('/flashcardss', (req, res) => {
-  res.render('pages/flashcardss');
-});
 
 // Endpoint to serve file upload page
 app.post('/upload', upload.single('file'), (req, res, next) => {
@@ -149,7 +148,7 @@ app.get('/quiz', async (req, res) => {
   res.render('pages/quiz', { message: jsonString })
 })
 
-app.get('/flashcard', async (req, res) => {
+app.get('/flashcards', async (req, res) => {
 
   switch (req.query.model) {
     case "gemini":
@@ -177,7 +176,7 @@ app.get('/flashcard', async (req, res) => {
 
   const index = await VectorStoreIndex.fromDocuments([document]);
 
-  const predefinedPrompt = `Generate a question and answer pair from this document. Let there be four question and answer pair. The pairs should be formatted in json, json should start with a start_json_ tag and end with a _end_json tag. For example here's is a sample response: start_json_ { "questions": [ { "question": "What is the capital of France?", "answer": "Paris" }, { "question": "Which planet is known as the Red Planet?", "answer": "Mars" } ]} _end_json`;
+  const predefinedPrompt = `Extract important concepts from this document and their short definitions/explanations. Put it in key value pairs. Let there be four concept and explanation pair. The pairs should be formatted in json, json should start with a start_json_ tag and end with a _end_json tag. For example here's is a sample response: start_json_ { "concepts": [ { "concept": "nutrition", "explanation": "The taking in and use of food and other nourishing material by the body" }, { "concept": " Intellectual Property", "explanation": "Legal rights that protect creations of the mind, such as inventions, literary and artistic works, designs, symbols, names, and images used in commerce. " } ]} _end_json`;
 
   // Query the index
   const queryEngine = index.asQueryEngine();
@@ -192,7 +191,7 @@ app.get('/flashcard', async (req, res) => {
   const jsonEnd = text.indexOf('_end_json');
   const jsonString = text.substring(jsonStart, jsonEnd).trim();
 
-  res.render('pages/flashcard', { message: jsonString })
+  res.render('pages/flashcards', { message: jsonString })
 })
 
 
