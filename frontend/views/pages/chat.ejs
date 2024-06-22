@@ -103,6 +103,7 @@
                   <option value="gpt-4">GPT-4</option>
                   <option value="gpt-4o">GPT-4o</option>
                   <option value="gemini">Gemini</option>
+                  <option value="llama3">llama3</option>
                 </select>
               </div>
             </div>
@@ -174,8 +175,7 @@
       const model = document.getElementById("model");
       const quizLink = document.getElementById('quiz');
       const flashLink = document.getElementById('flashcard');
-
-
+      const summarizeLink = document.getElementById('summarize');
 
       const pathname = window.location.pathname;
       const filename = pathname.substring(pathname.lastIndexOf("/") + 1);
@@ -199,6 +199,10 @@
         // Update the link's href with the new URL including query parameters
         flashLink.href = url.toString();
     });
+
+    summarizeLink.addEventListener("click", ()=>{
+      
+    })
 
       async function llamachat(data) {
         const response = await fetch(
