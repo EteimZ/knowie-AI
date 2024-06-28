@@ -1,20 +1,38 @@
-# knowie-AI
+# MK Project
 
-This project is an AI-powered study-aid platform for students.
+Simple demonstration for [Monkie Kid's](https://en.wikipedia.org/wiki/Lego_Monkie_Kid) project.
 
-Install Live Sass Compiler by Glenn Marks
+## Usage
 
-Run npm install
+clone the repo then `cd` into it and run:
 
-put API keys in .env file, in the format below:
+```bash
+npm install
+```
 
-OPENAI_API_KEY= 
-LLAMA_CLOUD_API_KEY= 
-GOOGLE_API_KEY= 
+Then create an `.env` file and put the following environment variables into it.
 
-Click on "Watch Sass" at the bottom of VS Code
+```bash
+OPENAI_API_KEY=......................
+GEMINI_API_KEY=..................
+REPLICATE_API_TOKEN=...........
+```
 
-Run npm devStart to run 
+To set up supabase storage add the following too:
 
+```bash
+STORAGE_URL =
+SERVICE_KEY =
+STORAGE_PATH=
+```
 
+All of these values can be optained from supabase dashboard.
 
+Then run:
+
+```bash
+npm run dev
+```
+
+## Resources
+- [How to use EJS with express](https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application)

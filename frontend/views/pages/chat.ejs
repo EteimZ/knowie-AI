@@ -1,165 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/dist/styles.css" />
-    <script src="/js/script.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <!--Side bar-->
-      <div class="sidebar">
-        <div class="sidebar-header">
-          <img class="icon-1" src="/images/Logo (1).svg" alt="" />
-          <img class="icon-2" src="/images/Knowlee.svg" alt="" />
-          <img class="icon-3" src="/images/collapse-icon.svg" alt="" />
-        </div>
 
-        <nav>
-          <ul>
-            <li>
-              <img
-                src="/images/dashboard-icon.svg"
-                class="sidebar-icon"
-                alt=""
-              />
-              <span>Dashboard</span>
-            </li>
-            <li>
-              <img src="/images/notes-icon.svg" class="sidebar-icon" alt="" />
-              <span>My Notes</span>
-            </li>
-            <li class="blue-bordered-list-item">
-              <img
-                src="/images/ai-tools-icon.svg"
-                class="sidebar-icon ai-tools-icon"
-                alt=""
-              />
-              <Span>AI Tools</Span>
-              <img src="/images/caret-right.svg" alt="" />
-            </li>
-            <li>
-              <img
-                src="/images/settings-icon.svg"
-                class="sidebar-icon"
-                alt=""
-              />
-              <span>Settings</span>
-            </li>
-            <li class="blue-bordered-list-item">
-              <img
-                src="/images/profile-icon.svg"
-                class="sidebar-icon profile-icon"
-                alt=""
-              />
-              <span>Profile</span>
-            </li>
-            <li>
-              <button>
-                <img
-                  src="/images/log-out-icon.svg"
-                  class="logout-icon"
-                  alt=""
-                />
-                <span>Log Out</span>
-              </button>
-            </li>
-          </ul>
-        </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/dist/styles.css" />
+  <script src="/js/script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:wght@400;600;700;800&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <!--Side bar-->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <img class="icon-1" src="/images/Logo (1).svg" alt="" />
+        <img class="icon-2" src="/images/Knowlee.svg" alt="" />
+        <img class="icon-3" src="/images/collapse-icon.svg" alt="" />
       </div>
 
-      <div class="main-section">
-        <div class="header">
-          <div class="searchbar">
-            <input type="search" class="search-input" placeholder="Search" />
-            <img class="search-icon" src="/images/search-icon.svg" alt="" />
-          </div>
+      <nav>
+        <ul>
+          <li>
+            <img src="/images/dashboard-icon.svg" class="sidebar-icon" alt="" />
+            <span>Dashboard</span>
+          </li>
+          <li>
+            <img src="/images/notes-icon.svg" class="sidebar-icon" alt="" />
+            <span>My Notes</span>
+          </li>
+          <li class="blue-bordered-list-item">
+            <img src="/images/ai-tools-icon.svg" class="sidebar-icon ai-tools-icon" alt="" />
+            <Span>AI Tools</Span>
+            <img src="/images/caret-right.svg" alt="" />
+          </li>
+          <li>
+            <img src="/images/settings-icon.svg" class="sidebar-icon" alt="" />
+            <span>Settings</span>
+          </li>
+          <li class="blue-bordered-list-item">
+            <img src="/images/profile-icon.svg" class="sidebar-icon profile-icon" alt="" />
+            <span>Profile</span>
+          </li>
+          <li>
+            <button>
+              <img src="/images/log-out-icon.svg" class="logout-icon" alt="" />
+              <span>Log Out</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
 
-          <div class="header-icons-container">
-            <div class="block-1">
-              <img
-                src="/images/notifications-icon.svg"
-                class="header-icon"
-                alt=""
-              />
-              <img src="/images/plus-icon.svg" class="header-icon" alt="" />
-            </div>
-            <div class="block-2">
-              <img src="/images/premium-icon.svg" class="header-icon" alt="" />
-              <!-- <span>GPTs</span>
+    <div class="main-section">
+      <div class="header">
+        <div class="searchbar">
+          <input type="search" class="search-input" placeholder="Search" />
+          <img class="search-icon" src="/images/search-icon.svg" alt="" />
+        </div>
+
+        <div class="header-icons-container">
+          <div class="block-1">
+            <img src="/images/notifications-icon.svg" class="header-icon" alt="" />
+            <img src="/images/plus-icon.svg" class="header-icon" alt="" />
+          </div>
+          <div class="block-2">
+            <img src="/images/premium-icon.svg" class="header-icon" alt="" />
+            <!-- <span>GPTs</span>
               <img src="/images/caret-right.svg" class="caret-icon" alt="" /> -->
 
-              <div class="dropdown-container">
-                <select id="model">
-                  <option value="gpt-3.5">GPT-3.5</option>
-                  <option value="gpt-4">GPT-4</option>
-                  <option value="gpt-4o">GPT-4o</option>
-                  <option value="gemini">Gemini</option>
-                  <option value="llama3">llama3</option>
-                </select>
-              </div>
+            <div class="dropdown-container">
+              <select id="model">
+                <option value="gpt-3.5">GPT-3.5</option>
+                <option value="gpt-4">GPT-4</option>
+                <option value="gpt-4o">GPT-4o</option>
+                <option value="gemini">Gemini</option>
+                <option value="llama3">llama3</option>
+              </select>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="content-container">
-          <div class="columns-wrapper">
-            <div class="left-column">
-              <!-- File Viewer -->
-              <iframe
-                id="fileViewer"
-                src=""
-                width="100%"
-                height="100%"
-              ></iframe>
+      <div class="content-container">
+        <div class="columns-wrapper">
+          <div class="left-column">
+            <!-- File Viewer -->
+            <iframe id="fileViewer" src="" width="100%" height="100%"></iframe>
+          </div>
+          <div class="right-column">
+            <!-- This is the chat display area -->
+            <div class="grid-item-1 chatbox" id="chat">
+              <div class="chat bot-message">
+                <img class="response-icon" src="/images/Logo (1).svg" alt="">
+                <p>Ask me anything concerning the document </p>
+              </div>
             </div>
-            <div class="right-column">
-              <!-- This is the chat display area -->
-              <div class="grid-item-1 chatbox" id="chat">
-                <div class="chat bot-message">
-                    <img class="response-icon" src="/images/Logo (1).svg" alt="">
-                    <p>Ask me anything concerning the document </p>
-                </div>
+
+            <div class="grid-item-2">
+              <div class="ai-tool-options">
+                <a id="summarize">Summarize</a>
+                <a href="/flashcards" id="flashcard">Generate Flashcards</a>
+                <a href="/quiz" id="quiz">Generate Quiz</a>
               </div>
 
-              <div class="grid-item-2">
-                <div class="ai-tool-options">
-                  <a href="/summarize" id="summarize">Summarize</a>
-                  <a href="/flashcards" id="flashcard">Generate Flashcards</a>
-                  <a href="/quiz" id="quiz">Generate Quiz</a>
+              <div class="userInput-container">
+                <textarea type="text" placeholder="Write your message here..." class="chat-input" id="chat-input"
+                  type="text"></textarea>
+                <div class="block-1">
+                  <img src="/images/bill-icon.svg" class="bill-icon chat-input-icon" alt="" />
+                  <img src="/images/plus-icon.svg" class="chat-input-icon" />
                 </div>
-
-                <div class="userInput-container">
-                  <textarea
-                    type="text"
-                    placeholder="Write your message here..."
-                    class="chat-input"
-                    id="chat-input"
-                    type="text"
-                  ></textarea>
-                  <div class="block-1">
-                    <img
-                      src="/images/bill-icon.svg"
-                      class="bill-icon chat-input-icon"
-                      alt=""
-                    />
-                    <img src="/images/plus-icon.svg" class="chat-input-icon" />
-                  </div>
-                  <div class="block 2" id="send">
-                    <img
-                      src="/images/send-icon.svg"
-                      class="send-icon chat-input-icon"
-                      alt=""
-                    />
-                  </div>
+                <div class="block 2" id="send">
+                  <img src="/images/send-icon.svg" class="send-icon chat-input-icon" alt="" />
                 </div>
               </div>
             </div>
@@ -167,113 +125,130 @@
         </div>
       </div>
     </div>
+  </div>
 
-    <script>
-      const sendButton = document.getElementById("send");
-      const chatInput = document.getElementById("chat-input");
-      const chat = document.getElementById("chat");
-      const model = document.getElementById("model");
-      const quizLink = document.getElementById('quiz');
-      const flashLink = document.getElementById('flashcard');
-      const summarizeLink = document.getElementById('summarize');
+  <script>
+    const sendButton = document.getElementById("send");
+    const chatInput = document.getElementById("chat-input");
+    const chat = document.getElementById("chat");
+    const model = document.getElementById("model");
+    const quizLink = document.getElementById('quiz');
+    const flashLink = document.getElementById('flashcard');
+    const summarizeLink = document.getElementById('summarize');
 
+    const pathname = window.location.pathname;
+    const filename = pathname.substring(pathname.lastIndexOf("/") + 1);
+    console.log(filename);
+
+
+    quizLink.addEventListener("click", () => {
+      const url = new URL(quizLink.href);
+      url.searchParams.append('filename', filename);
+      url.searchParams.append('model', model.value);
+
+      // Update the link's href with the new URL including query parameters
+      quizLink.href = url.toString();
+    });
+
+    flashLink.addEventListener("click", () => {
+      const url = new URL(flashLink.href);
+      url.searchParams.append('filename', filename);
+      url.searchParams.append('model', model.value);
+
+      // Update the link's href with the new URL including query parameters
+      flashLink.href = url.toString();
+    });
+
+    summarizeLink.addEventListener("click", () => {
+      summaryMessage();
+    })
+
+    async function llamachat(data) {
+      const response = await fetch(
+        `/chat?filename=${filename}&model=${model.value}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message: data }), // Send the user's message as JSON in the request body
+        }
+      );
+
+      const responseData = await response.json();
+      const botBubble = document.createElement("div");
+      botBubble.classList.add("chat", "bot-message");
+      const botIcon = document.createElement("img");
+      botIcon.classList.add("response-icon");
+      botIcon.src = "/images/Logo (1).svg";
+      const botPara = document.createElement("p");
+      botPara.textContent = responseData.message;
+      botBubble.appendChild(botIcon);
+      botBubble.appendChild(botPara);
+      chat.appendChild(botBubble);
+      chat.scrollTop = chat.scrollHeight; // Scroll to the bottom of the chatbox
+    }
+
+    async function sendMessage() {
+      const humanBubble = document.createElement("div");
+      humanBubble.classList.add("chat", "human-message");
+      const chatData = chatInput.value;
+      chatInput.value = "";
+      const humanPara = document.createElement("p");
+      humanPara.textContent = chatData;
+      humanBubble.appendChild(humanPara);
+      chat.appendChild(humanBubble);
+      await llamachat(chatData);
+      chat.scrollTop = chat.scrollHeight; // Scroll to the bottom of the chatbox
+    }
+
+    async function summaryMessage() {
+      const botBubble = document.createElement("div");
+      botBubble.classList.add("chat", "bot-message");
+      const botIcon = document.createElement("img");
+      botIcon.classList.add("response-icon");
+      botIcon.src = "/images/Logo (1).svg";
+      const botPara = document.createElement("p");
+      botPara.textContent = "Generating summary...";
+      botBubble.appendChild(botIcon);
+      botBubble.appendChild(botPara);
+      chat.appendChild(botBubble);
+      await llamachat("Summarize the document");
+      chat.scrollTop = chat.scrollHeight; // Scroll to the bottom of the chatbox
+    }
+
+    sendButton.addEventListener("click", () => {
+      sendMessage();
+    });
+
+    // Event listener for Enter key
+    chatInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault(); // Prevents adding a new line in the textarea
+        sendMessage();
+      }
+    });
+
+    // Function to set iframe source based on URL
+    async function setIframeSrc() {
       const pathname = window.location.pathname;
       const filename = pathname.substring(pathname.lastIndexOf("/") + 1);
       console.log(filename);
 
-      
-      quizLink.addEventListener("click", ()=>{
-        const url = new URL(quizLink.href);
-        url.searchParams.append('filename', filename );
-        url.searchParams.append('model', model.value );
+      // Make the fetch request
+      const response = await fetch("/storage/url");
 
-        // Update the link's href with the new URL including query parameters
-        quizLink.href = url.toString();
-     });
+      // Parse the JSON from the response
+      const data = await response.json();
 
-     flashLink.addEventListener("click", ()=>{
-        const url = new URL(flashLink.href);
-        url.searchParams.append('filename', filename );
-        url.searchParams.append('model', model.value );
+      document.getElementById(
+        "fileViewer"
+      ).src = `${data.url}/${filename}`;
+    }
 
-        // Update the link's href with the new URL including query parameters
-        flashLink.href = url.toString();
-    });
+    // Call the function to set iframe source on page load
+    window.onload = setIframeSrc;
+  </script>
+</body>
 
-    summarizeLink.addEventListener("click", ()=>{
-      
-    })
-
-      async function llamachat(data) {
-        const response = await fetch(
-          `/chat?filename=${filename}&model=${model.value}`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ message: data }), // Send the user's message as JSON in the request body
-          }
-        );
-
-        const responseData = await response.json();
-        const botBubble = document.createElement("div");
-        botBubble.classList.add("chat", "bot-message");
-        const botIcon = document.createElement("img");
-        botIcon.classList.add("response-icon");
-        botIcon.src = "/images/Logo (1).svg";
-        const botPara = document.createElement("p");
-        botPara.textContent = responseData.message;
-        botBubble.appendChild(botIcon);
-        botBubble.appendChild(botPara);
-        chat.appendChild(botBubble);
-        chat.scrollTop = chat.scrollHeight; // Scroll to the bottom of the chatbox
-      }
-
-      async function sendMessage() {
-        const humanBubble = document.createElement("div");
-        humanBubble.classList.add("chat", "human-message");
-        const chatData = chatInput.value;
-        chatInput.value = "";
-        const humanPara = document.createElement("p");
-        humanPara.textContent = chatData;
-        humanBubble.appendChild(humanPara);
-        chat.appendChild(humanBubble);
-        await llamachat(chatData);
-        chat.scrollTop = chat.scrollHeight; // Scroll to the bottom of the chatbox
-      }
-
-      sendButton.addEventListener("click", () => {
-        sendMessage();
-      });
-
-       // Event listener for Enter key
-        chatInput.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" && !event.shiftKey) {
-            event.preventDefault(); // Prevents adding a new line in the textarea
-            sendMessage();
-        }
-    });
-
-      // Function to set iframe source based on URL
-      async function setIframeSrc() {
-        const pathname = window.location.pathname;
-        const filename = pathname.substring(pathname.lastIndexOf("/") + 1);
-        console.log(filename);
-
-        // Make the fetch request
-        const response = await fetch("/storage/url");
-
-        // Parse the JSON from the response
-        const data = await response.json();
-
-        document.getElementById(
-          "fileViewer"
-        ).src = `${data.url}/${filename}`;
-      }
-
-      // Call the function to set iframe source on page load
-      window.onload = setIframeSrc;
-    </script>
-  </body>
 </html>
