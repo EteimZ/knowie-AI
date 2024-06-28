@@ -256,13 +256,20 @@
     });
 
       // Function to set iframe source based on URL
-      function setIframeSrc() {
+      async function setIframeSrc() {
         const pathname = window.location.pathname;
         const filename = pathname.substring(pathname.lastIndexOf("/") + 1);
         console.log(filename);
+
+        // Make the fetch request
+        const response = await fetch("/storage/url");
+
+        // Parse the JSON from the response
+        const data = await response.json();
+
         document.getElementById(
           "fileViewer"
-        ).src = `../../../uploads/${filename}`;
+        ).src = `${data.url}/${filename}`;
       }
 
       // Call the function to set iframe source on page load

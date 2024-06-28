@@ -1,6 +1,5 @@
 import express from 'express';
 import multer from 'multer';
-import fs from 'fs';
 import path from 'path';
 import bodyParser from 'body-parser';
 import { readPdfText } from 'pdf-text-reader';
@@ -16,6 +15,21 @@ import Replicate from 'replicate';
 
 import dotenv from 'dotenv';
 dotenv.config();
+
+// supabase storage
+import { StorageClient } from '@supabase/storage-js'
+import fs from 'fs/promises';
+
+import { decode } from "base64-arraybuffer";
+
+const STORAGE_URL = process.env.STORAGE_URL
+const SERVICE_KEY = process.env.SERVICE_KEY
+const STORAGE_PATH = process.env.STORAGE_PATH
+
+const storageClient = new StorageClient(STORAGE_URL, {
+  apikey: SERVICE_KEY,
+  Authorization: `Bearer ${SERVICE_KEY}`,
+})
 
 // Setup Gemini 
 const apiKey = process.env.GEMINI_API_KEY;
@@ -42,12 +56,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Configure storage for multer to keep the original filename
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-      cb(null, 'uploads/');
-  },
+const storage = multer.memoryStorage({
   filename: (req, file, cb) => {
-      cb(null, file.originalname); 
+    cb(null, file.originalname);
   }
 });
 const upload = multer({ storage: storage });
@@ -75,7 +86,18 @@ app.get('/review', (req, res) => {
 });
 
 // Endpoint to serve file upload page
-app.post('/upload', upload.single('file'), (req, res, next) => {
+app.post('/upload', upload.single('file'), async (req, res, next) => {
+
+  const file = req.file;
+
+  // decode file buffer to base64
+  const fileBase64 = decode(file.buffer.toString("base64"));
+
+  // upload the file to supabase
+  const { data, error } = await storageClient.from('storage_bucket').upload(file.originalname, fileBase64, {
+    contentType: 'application/pdf'
+  });
+
   res.send({ message: "Successful" });
 });
 
@@ -88,7 +110,7 @@ app.get('/chat/:filename', (req, res) => {
 // Endpoint to chat
 app.post('/chat', async (req, res) => {
 
-  const path = `./uploads/${req.query.filename}`
+  const path = `${STORAGE_PATH}/${req.query.filename}`
   const essay = await readPdfText({ url: path });
   const document = new Document({ text: essay, id_: "essay" });
 
@@ -172,8 +194,11 @@ app.post('/chat', async (req, res) => {
 
 app.get('/quiz', async (req, res) => {
 
-  const path = `./uploads/${req.query.filename}`
+  console.log(req.query.filename)
+
+  const path = `${STORAGE_PATH}/${req.query.filename}`
   console.log(path)
+
   const essay = await readPdfText({ url: path });
   const document = new Document({ text: essay, id_: "quiz" });
 
@@ -190,7 +215,7 @@ app.get('/quiz', async (req, res) => {
     for (let i = 0; i < nodesWithScore.length; i++) {
       text += `\n\n\tContext ${i + 1}: ${nodesWithScore[i]["node"].text}`
     }
-    
+
     const chatSession = model.startChat({
       generationConfig,
       history: [],
@@ -232,7 +257,7 @@ app.get('/quiz', async (req, res) => {
       responseText += output[i];
     }
     console.log(responseText);
-    
+
     // Extract the JSON part between start_json_ and _end_json
     const jsonStart = responseText.indexOf('start_json_') + 'start_json_'.length;
     const jsonEnd = responseText.indexOf('_end_json');
@@ -282,7 +307,7 @@ app.get('/quiz', async (req, res) => {
 
 app.get('/flashcards', async (req, res) => {
 
-  const path = `./uploads/${req.query.filename}`
+  const path = `${STORAGE_PATH}/${req.query.filename}`
   const essay = await readPdfText({ url: path });
   const document = new Document({ text: essay, id_: "quiz" });
 
@@ -384,6 +409,10 @@ app.get('/flashcards', async (req, res) => {
     res.render('pages/flashcards', { message: jsonString })
   }
 
+})
+
+app.get("/storage/url", (res, req) => {
+  req.send({url: STORAGE_PATH});
 })
 
 
