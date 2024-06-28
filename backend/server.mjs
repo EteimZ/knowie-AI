@@ -66,11 +66,13 @@ app.get('/', (req, res) => {
   res.render('pages/upload');
 });
 
-// Endpoint to serve file upload page
-app.get('/upload', (req, res) => {
-  res.render('pages/upload');
+app.get('/result', (req, res) => {
+  res.render('pages/result');
 });
 
+app.get('/review', (req, res) => {
+  res.render('pages/review');
+});
 
 // Endpoint to serve file upload page
 app.post('/upload', upload.single('file'), (req, res, next) => {

@@ -101,58 +101,110 @@
 
         <!-- Quiz generation section -->
         <div class="quiz-content-container">
-            <div class="heading">
-                <p>Complete the Quiz Below </p>
+          <div class="heading">
+              <p>Complete the Quiz Below </p>
+          </div>
+
+          <form id="quizForm">
+            <div class="quiz-wrapper" id="quizWrapper">
             </div>
+            <div id="message" style="display: none;"><%= message %></div>
+            <button class="submit-btn" type="submit">Submit</button>
+          </form>
 
-          <div class="quiz-wrapper" id="quizWrapper">
-
-        </div>
-        <div id="message" style="display: none;"><%= message %></div>
-      </div>
+    </div>
     </div>
 
     <script>
+      let obj;
       document.addEventListener('DOMContentLoaded', function() {
         const rawText = document.getElementById('message').innerText;
-        const obj = JSON.parse(rawText);
-        console.log(obj); // Verify that you receive the correct object
-        
-        const quizWrapper = document.getElementById('quizWrapper');
-        
-        // Iterate through questions array in obj
-        obj.questions.forEach((questionObj, index) => {
-            // Create individual quiz container
-            const quizContainer = document.createElement('div');
-            quizContainer.classList.add('individual-quiz-container');
-            
-            // Create question text element
-            const questionText = document.createElement('p');
-            questionText.textContent = `${index + 1}. ${questionObj.question}`;
-            quizContainer.appendChild(questionText);
-            
-            // Create options buttons
-            Object.keys(questionObj.options).forEach((optionKey) => {
-                const optionButton = document.createElement('button');
-                optionButton.classList.add('btn');
-                optionButton.textContent = questionObj.options[optionKey];
-                
-                // Add click event listener to check answer
-                optionButton.addEventListener('click', function() {
-                    checkAnswer(questionObj.answer, optionKey);
-                });
-                
-                quizContainer.appendChild(optionButton);
-            });
-            
-            // Append quiz container to quizWrapper in the DOM
-            quizWrapper.appendChild(quizContainer);
-        });
-    });
-
+        if (localStorage.getItem("questions") == null) {
+          console.log('Getting from Server');
+          obj = JSON.parse(rawText);
+          console.log(obj.questions);
+          localStorage.setItem("questions", JSON.stringify(obj));
+        } else { 
+          obj = JSON.parse(localStorage.getItem("questions"));
+        }
     
+        const quizWrapper = document.getElementById('quizWrapper');
+    
+        obj.questions.forEach((questionObj, index) => {
+          const quizContainer = document.createElement('div');
+          quizContainer.classList.add('individual-quiz-container');
+    
+          const questionText = document.createElement('p');
+          questionText.textContent = `${index + 1}. ${questionObj.question}`;
+          quizContainer.appendChild(questionText);
+    
+          Object.keys(questionObj.options).forEach((optionKey) => {
+            const optionButton = document.createElement('button');
+            optionButton.classList.add('btn');
+            optionButton.textContent = questionObj.options[optionKey];
+            optionButton.setAttribute('data-question', index + 1);
+            optionButton.setAttribute('data-option', optionKey);
+    
+            optionButton.addEventListener('click', function(event) {
+              event.preventDefault();
+              checkAnswer(index + 1, questionObj.answer, optionKey);
+              highlightSelection(index + 1, optionKey);
+            });
+    
+            quizContainer.appendChild(optionButton);
+          });
+    
+          quizWrapper.appendChild(quizContainer);
+        });
+      });
+    
+      const result = {}
+    
+      function checkAnswer(questionNumber, correctAnswer, selectedAnswer) {
+        const questionFeedback = {
+          selectedAnswer,
+          feedback: correctAnswer == selectedAnswer
+        }
+        result[questionNumber] = questionFeedback 
+        return 
+      }
+    
+      function highlightSelection(questionNumber, selectedAnswer) {
+        const buttons = document.querySelectorAll(`[data-question="${questionNumber}"]`);
+        buttons.forEach(button => {
+          if (button.getAttribute('data-option') === selectedAnswer) {
+            button.style.backgroundColor = '#7586f3';
+            button.style.color = 'white';
+          } else {
+            button.style.backgroundColor = 'white';
+            button.style.color = 'black';
+          }
+        });
+      }
+    
+      document.getElementById('quizForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        if (Object.keys(result).length !== obj.questions.length) {
+          alert("Answer all questions before submission");
+          return;
+        }
+    
+        let score = 0;
+        obj.questions.forEach((questionObj, index) => {
+          Object.assign(questionObj, result[index + 1]);
+          if (questionObj.feedback) {
+            score++;
+          }
+        });
+    
+        const scoreMessage = `You scored ${score}/${obj.questions.length}`;
+        localStorage.setItem('quizScore', score);
+        localStorage.setItem('results', JSON.stringify(obj.questions));
+    
+        window.location.href = '/result';
+      });
     </script>
-
 
   </body>
 </html>

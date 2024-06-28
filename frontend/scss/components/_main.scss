@@ -275,7 +275,7 @@
         font-weight: 600;
       }
       .btn {
-        background: white;
+        background: rgb(255, 255, 255);
         color: #222;
         font-weight: 500;
         width: 100%;
@@ -284,27 +284,146 @@
         margin: 10px 0;
         text-align: left;
         border-radius: 4px;
-        cursor: pointer;
         transition: all 0.3s;
+        cursor: pointer;
       }
       .btn:hover {
         background: #3f3f3f;
         color: #fff;
       }
-      #submit-btn{
-        background: #001e4d;
+      }
+     
+      .submit-btn{
+        background: #3a52ee;
         color: #fff;
         font-weight: 500;
-        width: 150px;
+        width: 120px;
         border: 0;
-        padding: 10px;
-        margin: 20px auto 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
         border-radius: 4px;
         cursor: pointer;
-        display: block;
+        margin-left: 33px;
+        margin-bottom: 20px;
+    }
       }
+
+//Result section
+.result-wrapper{
+    background-color: white;
+    width: 45%;
+    height: 40%;
+    margin: auto;
+    margin-top: rem(150);
+    border-radius: rem(10);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+    .score-message{
+    font-size: rem(20);
+    color: #3a52ee;
+    font-weight: 600;
+    text-align: center;
+
+    }
+    .options-message{
+    
+    display: flex;
+    justify-content: space-around;
+
+    }
+    button{
+        background: #3a52ee;
+        color: #fff;
+        font-weight: 500;
+        border: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        
+    }
+    #reviewButton{
+        margin-left: rem(10);
+    }
+    #okButton{
+        padding-left: rem(20);
+        padding-right: rem(20);
+    }
+}
+
+//Review section styles
+.review-content-container{
+    width: 94.4%;
+    height: 80.1%;
+    background-color: white;
+    margin: auto;
+    border-radius: rem(14);
+    overflow-y: auto;
+
+    .heading{
+        max-width: rem(256);
+        margin-top: rem(20);
+        margin-left: rem(30);
+
+        p{
+            font-size: rem(20);
+            color: #3a52ee;
+            font-weight: 600;
+            border-bottom: 1px solid #333;
+            padding-bottom: rem(15);
+            margin-bottom: 0;
+        }
+    }
+    .review-wrapper{
+        max-width: rem(600);
+        padding-left: rem(30);
+        padding-bottom: rem(30);
+      }
+      .individual-review-container {
+        margin-top: rem(30);
+
+        p{
+            color: black;
+            font-weight: 600;
+            font-size: rem(16);
+      }
+      .review-container h2 {
+        color: black;
+        font-weight: 600;
+      }
+      .btn {
+        font-weight: 500;
+        width: 100%;
+        border: 1px solid #222;
+        padding: 10px;
+        margin: 10px 0;
+        text-align: left;
+        border-radius: 4px;
+        transition: all 0.3s;
+      }
+     
+      }
+     
+      .incorrect{
+        background-color: rgb(209, 59, 59);
+      }
+      .correct{
+        background-color: rgb(78, 189, 78);
       }
 }
+
+
+
+
+
+
+
+
+
+
 
 //Flashcard section styles 
 
