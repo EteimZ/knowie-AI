@@ -1,0 +1,35 @@
+@use '../util/' as *;
+
+html{
+    box-sizing: border-box;
+    font-size: 100%;
+
+    ul {
+        list-style-type: none;
+      }
+      
+}
+
+*, *::before, *::after{
+    box-sizing: inherit;
+}
+
+body{
+    margin:0;
+    padding:0;
+    background-color: lightgrey;
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+}
+.container{
+    background-color: lightgrey;
+    max-width: rem(1400);
+    height:100vh;
+    display:flex;
+}
+
+.main-section{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/dist/styles.css">
+    <script src="/js/script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!--Side bar-->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img class="icon-1" src="/images/Logo (1).svg" alt="">
+                <img class="icon-2" src="/images/Knowlee.svg" alt="">
+                <img class="icon-3" src="/images/collapse-icon.svg" alt="">
+            </div>
+
+            <nav>
+                <ul>
+                    <li>
+                        <img src="/images/dashboard-icon.svg" class="sidebar-icon" alt="">
+                        <span>Dashboard</span>
+                    </li>
+                    <li>
+                        <img src="/images/notes-icon.svg" class="sidebar-icon" alt="">
+                        <span>My Notes</span>       
+                    </li>
+                    <li class="blue-bordered-list-item">
+                        <img src="/images/ai-tools-icon.svg" class="sidebar-icon ai-tools-icon" alt="">
+                        <Span>AI Tools</Span>  
+                        <img src="/images/caret-right.svg" alt="">      
+                    </li>
+                    <li>
+                        <img src="/images/settings-icon.svg" class="sidebar-icon" alt="">
+                        <span>Settings</span>
+                    </li>
+                    <li class="blue-bordered-list-item">
+                        <img src="/images/profile-icon.svg" class="sidebar-icon profile-icon" alt="">
+                        <span>Profile</span>
+                    </li>
+                    <li>
+                        <button>
+                            <img src="/images/log-out-icon.svg" class="logout-icon" alt="">
+                            <span>Log Out</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="main-section">
+            
+            <div class="header">
+                <div class="searchbar">
+                    <input type="search" class="search-input" placeholder="Search">
+                    <img class="search-icon" src="/images/search-icon.svg" alt="">
+                </div>
+
+                <div class="header-icons-container">
+                    <div class="block-1">
+                        <img src="/images/notifications-icon.svg" class="header-icon" alt="">
+                        <img src="/images/plus-icon.svg" class="header-icon" alt="">
+                    </div>
+                    <div class="block-2">
+                        <img src="/images/premium-icon.svg" class="header-icon" alt="">
+                        <span>GPTs</span>
+                        <img src="/images/caret-right.svg" class="caret-icon" alt="">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- upload button section -->
+            <div class="content-container upload-page-main-container">
+                <div class="up-content-container">
+                    <div class="box-1">
+                        <img src="/images/upload-icon.svg" alt="">
+                        <p>Drag and Drop <br> or</p>
+                        
+                        <label for="fileInput" class="custom-file-upload">
+                            Browse File
+                        </label>
+                        <input type="file" id="fileInput" style="display: none;" />
+                        <span id="fileName" class="file-upload-message"></span>
+
+                    </div>
+                    <div class="box-2">
+                        <p class="supported-files">Supported files: PDF, PPTX.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            const fileNameDisplay = document.getElementById('fileName');
+
+            if (file) {
+                // Update the label with a custom message
+                fileNameDisplay.textContent = `File ${file.name}. Uploaded successfully.`;
+                uploadFile(file);
+            } else {
+                fileNameDisplay.textContent = '';
+            }
+        });
+
+ 
+
+        function uploadFile(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                // Wait for 1 second before redirecting
+                setTimeout(() => {
+                    // Redirect to the chat page
+                    window.location.href = `/chat/${encodeURIComponent(file.name)}`;
+                }, 1000);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+
+    </script>
+</body>
+</html>
