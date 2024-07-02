@@ -26,10 +26,13 @@ const STORAGE_URL = process.env.STORAGE_URL
 const SERVICE_KEY = process.env.SERVICE_KEY
 const STORAGE_PATH = process.env.STORAGE_PATH
 
+
 const storageClient = new StorageClient(STORAGE_URL, {
   apikey: SERVICE_KEY,
   Authorization: `Bearer ${SERVICE_KEY}`,
 })
+
+console.log(storageClient);
 
 // Setup Gemini 
 const apiKey = process.env.GEMINI_API_KEY;
@@ -418,6 +421,6 @@ app.get("/storage/url", (res, req) => {
 
 const port = process.env.PORT || 5000;  // Use environment variable for port or default to 3000
 
-app.listen(port, () => {
+app.listen(port,'0.0.0.0', () => {
   console.log(`Server listening on port ${port}`);
 });

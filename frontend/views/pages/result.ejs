@@ -138,9 +138,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.getElementById('okButton').addEventListener('click', function() {
     alert('Thank you for completing the quiz!');
-    window.location.href = '/'
-    localStorage.removeItem('quizScore');
-    localStorage.removeItem('results');
+     // Clear localStorage items
+     localStorage.removeItem('quizScore');
+     localStorage.removeItem('results');
+     localStorage.removeItem('questions');
+ 
+     // Redirect to the home page
+     window.location.href = '/';
   });
 
   document.getElementById('reviewButton').addEventListener('click', function() {
