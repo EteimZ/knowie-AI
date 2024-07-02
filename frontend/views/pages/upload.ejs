@@ -90,7 +90,7 @@
 
                     </div>
                     <div class="box-2">
-                        <p class="supported-files">Supported files: PDF, PPTX.</p>
+                        <p class="supported-files">Supported file: PDF</p>
                     </div>
                 </div>
 
@@ -130,7 +130,7 @@
                 setTimeout(() => {
                     // Redirect to the chat page
                     window.location.href = `/chat/${encodeURIComponent(file.name)}`;
-                }, 7000);
+                }, 500);
             })
             .catch((error) => {
                 console.error('Error:', error);
