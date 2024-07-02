@@ -430,15 +430,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
 //Flashcard section styles 
 
 .flashcard-wrapper{
@@ -505,6 +496,19 @@
     margin-left: rem(18);
     margin-right: rem(18);
 }
+}
+.backToHomeBtn{
+    background: #3a52ee;
+    color: #fff;
+    font-weight: 500;
+    border: 0;
+    padding-bottom: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    padding-top: 10px;
+    margin-left: 55px;
+    margin-bottom: 20px;
+    width: 120px;
 }
 
 

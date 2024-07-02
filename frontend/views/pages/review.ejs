@@ -136,9 +136,20 @@
     localStorage.removeItem('results');
     localStorage.removeItem('questions');
 
-    // Redirect to the home page
-    window.location.href = '/'; //redirect to the filechat PDF
+    // Retrieve the filename from localStorage
+    const filename = localStorage.getItem('uploadedFileName');
+    console.log(`File name retrieved from localStorage: ${filename}`);
+    
+    if (filename) {
+        // Redirect to the chat page with the correct file name
+        window.location.href = `/chat/${encodeURIComponent(filename)}`;
+    } else {
+        // If for some reason the filename is not available, fallback to home page
+        window.location.href = '/';
+    }
   });
+
+  
 });
   </script>
 </body>
